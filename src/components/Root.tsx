@@ -1,5 +1,5 @@
+import { NavigationContext } from "@host/contexts/navigation";
 import React from "react";
-import { NavigationContext } from "../../host/contexts/navigation";
 
 export interface RootProps {}
 
