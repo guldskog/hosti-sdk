@@ -2,6 +2,7 @@ const fs = require("fs");
 const { zip } = require("zip-a-folder");
 const postcss = require("postcss");
 const autoprefixer = require("autoprefixer");
+const postCssPlugin = require("esbuild-style-plugin");
 
 const esbuild = require("esbuild");
 
@@ -26,7 +27,13 @@ esbuild
       ".gif": "file",
     },
     publicPath: "#{AssetsBaseUri}#",
-    plugins: [],
+    plugins: [
+      postCssPlugin({
+        postcss: {
+          plugins: [require("tailwindcss"), require("autoprefixer")],
+        },
+      }),
+    ],
     logLevel: "error",
     banner: {
       js: `// ${id} ${version}`,
