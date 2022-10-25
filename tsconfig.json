@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "allowUmdGlobalAccess": true,
+    "lib": ["ESNEXT", "DOM"],
+    "resolveJsonModule": true,
+    "paths": {
+      "@host/*": ["./host/*"]
+    }
+  },
+  "include": ["src/**/*", "host/types.d.ts", "host/contexts/navigation.ts"]
+}
