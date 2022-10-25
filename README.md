@@ -30,4 +30,4 @@ _If there is updates to the SDK you can merge the SDK into your branch or rebase
 
 ## Contribue to the SDK
 
-If you have improvements to the SDK you can create a "`sdk-{feature}`" branch and then create a pull request into main.
+If you have improvements to the SDK you can create a "`sdk-{feature}`" branch and then create a pull request into sdk.
