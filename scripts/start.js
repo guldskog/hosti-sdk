@@ -64,11 +64,7 @@ esbuild
 
       watcher.on("change", (path) => {
         if (ws.readyState === 1) {
-          if (path.startsWith("host")) {
-            ws.send("reload");
-          } else {
-            ws.send("reload.app");
-          }
+          ws.send("reload");
         }
       });
     });
