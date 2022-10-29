@@ -2,6 +2,7 @@ import { buildUrl } from "./buildUrl";
 import { current } from "./current";
 
 export interface NavigateProps {
+  appId?: string;
   params?: string[];
   query?: { [key: string]: string };
   hash?: string;

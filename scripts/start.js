@@ -15,14 +15,11 @@ esbuild
       entryPoints: {
         app: "src/app.tsx",
         manifest: "src/manifest.json",
-        host: "host/index.ts",
+        hosti: "hosti/index.ts",
       },
       bundle: true,
       mainFields: ["module", "main"],
       format: "esm",
-      define: {
-        "process.env.NODE_ENV": '"development"',
-      },
       loader: {
         ".png": "file",
         ".jpg": "file",
@@ -47,7 +44,7 @@ esbuild
       ui: false,
       https: true,
       port: 4000,
-      startPath: `/${id}`,
+      startPath: `/${id && id !== "home" ? `@${id}` : "/"}`,
       notify: false,
       open: process.argv[2] === "open",
       server: "./public",
@@ -57,7 +54,7 @@ esbuild
     const wss = new SocketServer({ port: 4002 });
 
     wss.on("connection", (ws) => {
-      const watcher = chokidar.watch(["./src/**", "./host/**"], {
+      const watcher = chokidar.watch(["./src/**", "./hosti/**"], {
         ignored: /^\./,
         persistent: true,
       });

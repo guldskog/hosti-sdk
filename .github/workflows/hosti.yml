@@ -1,0 +1,40 @@
+name: Build and deploy hosti.js
+on:
+  push:
+    branches: sdk
+
+jobs:
+  build:
+    name: Build 🔨
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Install dependencies
+        run: yarn
+      - name: Build hosti.js
+        run: yarn build-hosti
+      - name: Archive artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: dist
+          path: dist
+  deploy:
+    name: Deploy 🚀
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Download artifact
+        uses: actions/download-artifact@main
+        with:
+          name: dist
+          path: dist
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ftpcluster.loopia.se
+          username: hostiapp
+          password: ${{ secrets.ftp_password }}
+          local-dir: dist/

@@ -4,7 +4,7 @@ export type Current = () => NavigateProps;
 
 export const current: Current = () => {
   const params = location.pathname.slice(1).split("/");
-  params.shift();
+  const appId = params[0].includes("@") ? params.shift().substring(1) : "home";
 
   const query = location.search
     .slice(1)
@@ -17,5 +17,5 @@ export const current: Current = () => {
 
   const hash = location.hash.slice(1);
 
-  return { params, query, hash };
+  return { appId, params, query, hash };
 };

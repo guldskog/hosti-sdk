@@ -16,9 +16,6 @@ esbuild
     mainFields: ["module", "main"],
     format: "esm",
     minify: true,
-    define: {
-      "process.env.NODE_ENV": '"production"',
-    },
     loader: {
       ".png": "file",
       ".jpg": "file",

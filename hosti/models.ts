@@ -1,9 +1,11 @@
 import { Navigation } from "./navigation";
 
+export type Environment = "localhost" | "live";
+
 export interface AppProps {
   node: HTMLElement;
   navigation: Navigation;
-  environment: "localhost" | "live";
+  environment: Environment;
 }
 export type App = (props: AppProps) => {
   version: string;

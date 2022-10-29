@@ -1,7 +1,12 @@
+import { current } from "./current";
 import { NavigateProps } from "./navigate";
 
 export const buildUrl = (props: NavigateProps) => {
-  const stringifyParams = (params: string[]) => {
+  const appId = (appId: string) => {
+    return appId && appId !== "home" ? `/@${appId}` : `/`;
+  };
+
+  const params = (params: string[]) => {
     if (params?.length) {
       return `/${params.join("/")}`;
     }
@@ -9,7 +14,7 @@ export const buildUrl = (props: NavigateProps) => {
     return "";
   };
 
-  const stringifyQuery = (query: { [key: string]: string }) => {
+  const query = (query: { [key: string]: string }) => {
     const queryKeys = query && Object.keys(query);
 
     if (queryKeys?.length) {
@@ -23,14 +28,14 @@ export const buildUrl = (props: NavigateProps) => {
     return "";
   };
 
-  const stringifyHash = (hash: string) => {
+  const hash = (hash: string) => {
     return hash ? `#${hash}` : "";
   };
 
-  const appId = `/${location.pathname.slice(1).split("/")[0]}`;
-  const params = stringifyParams(props.params || []);
-  const query = stringifyQuery(props.query || {});
-  const hash = stringifyHash(props.hash || "");
-
-  return `${appId}${params}${query}${hash}`;
+  return [
+    appId(props.appId || current().appId),
+    params(props.params || []),
+    query(props.query || {}),
+    hash(props.hash || ""),
+  ].join("");
 };

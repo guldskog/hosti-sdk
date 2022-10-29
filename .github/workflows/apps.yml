@@ -1,4 +1,4 @@
-name: Build and deploy
+name: Build and deploy app
 on:
   push:
     branches: apps/**
@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build app.zip
-        run: yarn build
+        run: yarn build-app
       - name: Unzip app.zip
         uses: montudor/action-zip@v1
         with:
