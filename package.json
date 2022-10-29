@@ -1,9 +1,9 @@
 {
   "license": "ISC",
   "scripts": {
-    "start": "node scripts/start.js",
-    "build-app": "node scripts/build-app.js",
-    "build-hosti": "node scripts/build-hosti.js"
+    "start": "node sdk/scripts/start.js",
+    "build-app": "node sdk/scripts/build-app.js",
+    "build-hosti": "node sdk/scripts/build-hosti.js"
   },
   "dependencies": {
     "@types/react": "^18.0.21",

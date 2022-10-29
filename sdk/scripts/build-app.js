@@ -6,7 +6,7 @@ const postCssPlugin = require("esbuild-style-plugin");
 
 const esbuild = require("esbuild");
 
-const { id, version } = require("../src/manifest.json");
+const { id, version } = require("../../src/manifest.json");
 
 esbuild
   .build({

@@ -1,7 +1,7 @@
 const chokidar = require("chokidar");
 const esbuild = require("esbuild");
 const browserSync = require("browser-sync");
-const { id } = require("../src/manifest.json");
+const { id } = require("../../src/manifest.json");
 const SocketServer = require("ws").Server;
 const postCssPlugin = require("esbuild-style-plugin");
 
@@ -15,7 +15,7 @@ esbuild
       entryPoints: {
         app: "src/app.tsx",
         manifest: "src/manifest.json",
-        hosti: "hosti/index.ts",
+        hosti: "sdk/hosti/index.ts",
       },
       bundle: true,
       mainFields: ["module", "main"],
