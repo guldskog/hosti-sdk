@@ -6,7 +6,7 @@
     "lib": ["ESNEXT", "DOM"],
     "resolveJsonModule": true,
     "paths": {
-      "@hosti/*": ["hosti/*"]
+      "@hosti/*": ["./hosti/*"]
     }
   },
   "include": ["src/**/*", "hosti/**/*"]
