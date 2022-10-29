@@ -7,10 +7,7 @@ export interface AppProps {
   navigation: Navigation;
   environment: Environment;
 }
-export type App = (props: AppProps) => {
-  version: string;
-  destroy?: () => void;
-};
+export type App = (props: AppProps) => void;
 
 export interface Manifest {
   id: string;
