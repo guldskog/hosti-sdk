@@ -34,12 +34,11 @@ const loadApp = async (path: string, manifest?: Manifest) => {
   });
 };
 
-if (isLocalhost) {
-  new WebSocket("ws://localhost:4002").onmessage = ({ data }) => {
-    if (data === "reload") location.reload();
-  };
-
-  (async () => {
+(async () => {
+  if (isLocalhost) {
+    new WebSocket("ws://localhost:4002").onmessage = ({ data }) => {
+      if (data === "reload") location.reload();
+    };
     const manifest = await importDefault<Manifest>(
       `http://localhost:4001/manifest.js`
     );
@@ -54,12 +53,12 @@ if (isLocalhost) {
     }
 
     loadApp("http://localhost:4001");
-  })();
-} else {
-  const appPath = `https://hosti.app/apps/${current().appId}`;
+  } else {
+    const appPath = `https://hosti.app/apps/${current().appId}`;
 
-  const response = await fetch(`${appPath}/manifest.json`);
-  const manifest = (await response.json()) as Manifest;
+    const response = await fetch(`${appPath}/manifest.json`);
+    const manifest = (await response.json()) as Manifest;
 
-  loadApp(appPath, manifest);
-}
+    loadApp(appPath, manifest);
+  }
+})();
