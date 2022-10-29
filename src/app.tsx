@@ -1,6 +1,5 @@
 import { NavigationContext } from "./contexts/navigation";
 import { App } from "@hosti/models";
-import { NavigationContext } from "@host/contexts/navigation";
 import ReactDOM from "react-dom/client";
 import { Root } from "./components/Root";
 import "./styles.css";
