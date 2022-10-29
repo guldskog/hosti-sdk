@@ -44,7 +44,7 @@ esbuild
       ui: false,
       https: true,
       port: 4000,
-      startPath: `/${id && id !== "home" ? `@${id}` : "/"}`,
+      startPath: `/${id && id !== "home" ? `@${id}` : ""}`,
       notify: false,
       open: process.argv[2] === "open",
       server: "./public",
