@@ -6,6 +6,6 @@ esbuild.build({
   outfile: "dist/hosti.js",
   mainFields: ["module", "main"],
   format: "iife",
-  minify: false,
+  minify: true,
   logLevel: "error",
 });

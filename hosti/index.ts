@@ -15,7 +15,7 @@ const loadApp = async (path: string, manifest?: Manifest) => {
       styles.onload = () => {
         resolve(styles);
       };
-      styles.href = `${path}/app.css${manifest && `?${manifest.id}`}`;
+      styles.href = `${path}/app.css${manifest && `?${manifest.version}`}`;
       styles.type = "text/css";
       styles.rel = "stylesheet";
       styles.id = "app-styles";
@@ -24,7 +24,7 @@ const loadApp = async (path: string, manifest?: Manifest) => {
 
   await loadStyles();
   const app = await importDefault<App>(
-    `${path}/app.js?${manifest && `?${manifest.id}`}`
+    `${path}/app.js${manifest && `?${manifest.version}`}`
   );
 
   app({
