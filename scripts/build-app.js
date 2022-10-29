@@ -23,7 +23,7 @@ esbuild
       ".svg": "file",
       ".gif": "file",
     },
-    publicPath: "#{AssetsBaseUri}#",
+    publicPath: `https://hosti.app/apps/${id}/`,
     plugins: [
       postCssPlugin({
         postcss: {
