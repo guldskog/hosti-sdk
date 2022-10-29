@@ -3,7 +3,7 @@ import { NavigateProps } from "./navigate";
 
 export const buildUrl = (props: NavigateProps) => {
   const appId = (appId: string) => {
-    return appId && appId !== "home" ? `/@${appId}` : `/`;
+    return appId && appId !== "home" ? `/@${appId}` : ``;
   };
 
   const params = (params: string[]) => {

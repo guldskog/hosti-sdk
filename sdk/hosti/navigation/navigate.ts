@@ -17,7 +17,7 @@ export const navigate: Navigate = (props) => {
   if (currentUrl === newUrl) return;
 
   if (current().appId !== props.appId) {
-    location.href = newUrl;
+    location.href = `${location.origin}${newUrl}`;
     return;
   }
 

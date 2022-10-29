@@ -54,7 +54,6 @@ const loadApp = async (path: string, manifest?: Manifest) => {
         ...navigation.current(),
         appId: manifest.id,
       });
-      location.reload();
       return;
     }
 

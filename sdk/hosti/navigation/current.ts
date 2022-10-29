@@ -3,8 +3,10 @@ import { NavigateProps } from "./navigate";
 export type Current = () => NavigateProps;
 
 export const current: Current = () => {
-  const params = location.pathname.slice(1).split("/");
-  const appId = params[0].includes("@") ? params.shift().substring(1) : "home";
+  const pathname = location.pathname.slice(1);
+  const params = !!pathname ? pathname.split("/") : [];
+
+  const appId = params[0]?.includes("@") ? params.shift().substring(1) : "home";
 
   const query = location.search
     .slice(1)
