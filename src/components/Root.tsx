@@ -9,12 +9,18 @@ export const Root: React.FC<RootProps> = (props) => {
   return (
     <div className="absolute w-full h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div className="grid grid-cols-7 gap-20 py-40 px-10 max-w-7xl mx-auto">
-        <a href="/to-do">
+        <button
+          onClick={() => {
+            navigation.navigate({
+              appId: "to-do",
+            });
+          }}
+        >
           <button className="w-full aspect-square bg-blue-500 rounded-2xl shadow-lg"></button>
           <div className="overflow-hidden whitespace-nowrap text-ellipsis text-white drop-shadow text-sm text-center">
             To Do
           </div>
-        </a>
+        </button>
       </div>
     </div>
   );
