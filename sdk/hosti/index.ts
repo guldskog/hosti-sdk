@@ -1,4 +1,4 @@
-import { App, Environment, importDefault, Manifest } from "./models";
+import { App, Environment, Manifest } from "./models";
 import navigation from "./navigation";
 import { current } from "./navigation/current";
 
@@ -8,21 +8,27 @@ document.body.appendChild(node);
 const isLocalhost = location.hostname === "localhost";
 const environment: Environment = isLocalhost ? "localhost" : "live";
 
-const loadApp = async (path: string, manifest?: Manifest) => {
-  const loadStyles = (): Promise<HTMLLinkElement> =>
-    new Promise((resolve) => {
-      const styles = document.createElement("link");
-      styles.onload = () => {
-        resolve(styles);
-      };
-      styles.href = `${path}/app.css${manifest ? `?${manifest.version}` : ""}`;
-      styles.type = "text/css";
-      styles.rel = "stylesheet";
-      styles.id = "app-styles";
-      document.getElementsByTagName("head")[0].appendChild(styles);
-    });
+const importDefault = async <T>(path: string): Promise<T> =>
+  (await import(path)).default;
 
-  await loadStyles();
+const loadStyles = (
+  path: string,
+  manifest?: Manifest
+): Promise<HTMLLinkElement> =>
+  new Promise((resolve) => {
+    const styles = document.createElement("link");
+    styles.onload = () => {
+      resolve(styles);
+    };
+    styles.href = `${path}/app.css${manifest ? `?${manifest.version}` : ""}`;
+    styles.type = "text/css";
+    styles.rel = "stylesheet";
+    styles.id = "app-styles";
+    document.getElementsByTagName("head")[0].appendChild(styles);
+  });
+
+const loadApp = async (path: string, manifest?: Manifest) => {
+  await loadStyles(path, manifest);
   const app = await importDefault<App>(
     `${path}/app.js${manifest ? `?${manifest.version}` : ""}`
   );

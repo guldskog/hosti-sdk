@@ -16,6 +16,3 @@ export interface Manifest {
 }
 
 export interface Env {}
-
-export const importDefault = async <T>(path: string): Promise<T> =>
-  (await import(path)).default;
