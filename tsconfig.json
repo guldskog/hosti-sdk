@@ -6,8 +6,8 @@
     "lib": ["ESNEXT", "DOM"],
     "resolveJsonModule": true,
     "paths": {
-      "@host/*": ["hosti/*"]
+      "@hosti/*": ["hosti/*"]
     }
   },
-  "include": ["src/**/*", "hosti/types.d.ts", "hosti/contexts/navigation.ts"]
+  "include": ["src/**/*", "hosti/**/*"]
 }
