@@ -1,5 +1,4 @@
 const fs = require("fs");
-const { zip } = require("zip-a-folder");
 const postcss = require("postcss");
 const autoprefixer = require("autoprefixer");
 const postCssPlugin = require("esbuild-style-plugin");
@@ -12,7 +11,7 @@ esbuild
   .build({
     entryPoints: ["./src/app.tsx"],
     bundle: true,
-    outfile: "tmp/app.js",
+    outfile: "dist/app.js",
     mainFields: ["module", "main"],
     format: "esm",
     minify: true,
@@ -38,32 +37,26 @@ esbuild
     },
   })
   .then(async () => {
-    fs.copyFile("./src/manifest.json", "tmp/manifest.json", (err) => {
+    fs.copyFile("./src/manifest.json", "dist/manifest.json", (err) => {
       if (err) {
         throw err;
       }
     });
 
-    fs.readFile("tmp/app.css", (err, css) => {
+    fs.readFile("dist/app.css", (err, css) => {
       postcss([autoprefixer])
-        .process(css, { from: "tmp/app.css", to: "tmp/app.css" })
+        .process(css, { from: "dist/app.css", to: "dist/app.css" })
         .then(({ css }) => {
-          fs.writeFile("tmp/app.css", css, () => true);
+          fs.writeFile("dist/app.css", css, () => true);
         });
     });
 
-    await zip("tmp", `./app.zip`);
-
-    const jsStats = fs.statSync("tmp/app.js");
+    const jsStats = fs.statSync("dist/app.js");
     const jsKbSize = Math.floor(jsStats.size / 1024);
-    const cssStats = fs.statSync("tmp/app.css");
+    const cssStats = fs.statSync("dist/app.css");
     const cssKbSize = Math.floor(cssStats.size / 1024);
 
     console.log("Script:", jsKbSize, "kb");
     console.log("CSS:", cssKbSize, "kb");
     console.log("");
-    console.log(`app.zip`, jsKbSize + cssKbSize, "kb");
-    console.log("");
-
-    fs.rmSync("tmp", { recursive: true });
   });

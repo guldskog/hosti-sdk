@@ -12,17 +12,13 @@ jobs:
         uses: actions/checkout@main
       - name: Install dependencies
         run: yarn
-      - name: Build app.zip
+      - name: Build app
         run: yarn build-app
-      - name: Unzip app.zip
-        uses: montudor/action-zip@v1
-        with:
-          args: unzip -qq app.zip -d app
       - name: Archive artifact
         uses: actions/upload-artifact@main
         with:
-          name: app
-          path: app
+          name: dist
+          path: dist
   deploy:
     name: Deploy 🚀
     needs: build
@@ -33,13 +29,13 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@main
         with:
-          name: app
-          path: app
+          name: dist
+          path: dist
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ftpcluster.loopia.se
           username: hostiapp
           password: ${{ secrets.ftp_password }}
-          local-dir: app/
+          local-dir: dist/
           server-dir: "${{ github.ref_name }}/"
