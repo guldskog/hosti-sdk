@@ -5,7 +5,6 @@ import "./styles.css";
 
 const app: App = ({ node }) => {
   const root = ReactDOM.createRoot(node);
-
   root.render(<Root />);
 };
 

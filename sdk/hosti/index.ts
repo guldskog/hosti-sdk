@@ -3,6 +3,7 @@ import navigation from "./navigation";
 import { current } from "./navigation/current";
 
 const node = document.createElement("div");
+node.id = "app";
 document.body.appendChild(node);
 
 const isLocalhost = location.hostname === "localhost";
