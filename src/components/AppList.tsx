@@ -31,8 +31,8 @@ export const AppList: React.FC<AppListProps> = (props) => {
 
     (async () => {
       const branches = await fetchBranches();
-      const appsBranches = branches.filter((branch) =>
-        branch.name.includes("app")
+      const appsBranches = branches.filter(
+        (branch) => branch.name.includes("app") && branch.name !== "apps/home"
       );
 
       const apps: App[] = [];
