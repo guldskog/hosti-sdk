@@ -46,9 +46,9 @@ export const AppList: React.FC<AppListProps> = (props) => {
           id: appBranch.name,
           name: appBranch.name,
           author: {
-            name: branch.commit.author.login,
-            avatarUrl: branch.commit.author.avatar_url,
-            htmlUrl: branch.commit.author.html_url,
+            name: branch.commit.author?.login,
+            avatarUrl: branch.commit.author?.avatar_url,
+            htmlUrl: branch.commit.author?.html_url,
           },
         });
       }
