@@ -1,4 +1,8 @@
 const fs = require("fs");
+const postcss = require("postcss");
+const autoprefixer = require("autoprefixer");
+const postCssPlugin = require("esbuild-style-plugin");
+
 const { exec } = require("child_process");
 const esbuild = require("esbuild");
 const { version } = require("../../src/manifest.json");
@@ -12,7 +16,7 @@ exec("git rev-parse --abbrev-ref HEAD", (err, stdout) => {
 
   esbuild
     .build({
-      entryPoints: ["./src/app.ts"],
+      entryPoints: ["./src/app.tsx"],
       bundle: true,
       outfile: "dist/app.js",
       mainFields: ["module", "main"],
@@ -26,7 +30,13 @@ exec("git rev-parse --abbrev-ref HEAD", (err, stdout) => {
         ".gif": "file",
       },
       publicPath: `https://hosti.app/apps/${appId}/`,
-      plugins: [],
+      plugins: [
+        postCssPlugin({
+          postcss: {
+            plugins: [require("tailwindcss"), require("autoprefixer")],
+          },
+        }),
+      ],
       logLevel: "error",
       banner: {
         js: `// ${appId} ${version}`,
