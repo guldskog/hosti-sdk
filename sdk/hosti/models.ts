@@ -10,9 +10,5 @@ export interface AppProps {
 export type App = (props: AppProps) => void;
 
 export interface Manifest {
-  id: string;
-  name: string;
   version: string;
 }
-
-export interface Env {}

@@ -1,6 +1,5 @@
 import { App, Environment, Manifest } from "./models";
 import navigation from "./navigation";
-import { current } from "./navigation/current";
 
 const node = document.createElement("div");
 node.id = "app";
@@ -46,21 +45,21 @@ const loadApp = async (path: string, manifest?: Manifest) => {
     new WebSocket("ws://localhost:4002").onmessage = ({ data }) => {
       if (data === "reload") location.reload();
     };
-    const manifest = await importDefault<Manifest>(
-      `http://localhost:4001/manifest.js`
-    );
 
-    if (manifest.id !== navigation.current().appId) {
+    const response = await fetch(`http://localhost:4003/appId`);
+    const appId = await response.text();
+
+    if (appId !== navigation.current().appId) {
       navigation.navigate({
         ...navigation.current(),
-        appId: manifest.id,
+        appId,
       });
       return;
     }
 
     loadApp("http://localhost:4001");
   } else {
-    const appPath = `https://hosti.app/apps/${current().appId}`;
+    const appPath = `https://hosti.app/apps/${navigation.current().appId}`;
 
     const response = await fetch(`${appPath}/manifest.json`);
     const manifest = (await response.json()) as Manifest;
