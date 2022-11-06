@@ -1,4 +1,4 @@
-import { NavigationContext } from "@hosti/contexts/navigation";
+import { NavigationContext } from "../contexts/navigation";
 import React, { useEffect } from "react";
 
 export interface AppListProps {}
