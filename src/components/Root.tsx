@@ -2,17 +2,17 @@ import { MeshReflectorMaterial, OrbitControls, Sky } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Leva } from "leva";
 import { Perf } from "r3f-perf";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { Fox } from "./Fox";
-import { Hamburger } from "./Hamburger";
-import { World } from "./World";
 
 export const Root = () => {
+  const canvas = useRef();
+
   return (
     <main className="fixed w-screen h-screen inset-0">
       <Leva />
 
-      <Canvas>
+      <Canvas ref={canvas}>
         <Perf position="top-left" />
         <OrbitControls />
 
@@ -27,9 +27,7 @@ export const Root = () => {
         <Sky sunPosition={5} />
 
         <Suspense>
-          {/* <Hamburger /> */}
-          {/* <Fox /> */}
-          <World />
+          <Fox />
         </Suspense>
       </Canvas>
     </main>
