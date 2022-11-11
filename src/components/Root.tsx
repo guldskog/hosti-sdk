@@ -1,14 +1,15 @@
-import { MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
+import { MeshReflectorMaterial, OrbitControls, Sky } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Leva } from "leva";
 import { Perf } from "r3f-perf";
 import { Suspense } from "react";
 import { Fox } from "./Fox";
 import { Hamburger } from "./Hamburger";
+import { World } from "./World";
 
 export const Root = () => {
   return (
-    <main className="fixed w-screen h-screen inset-0 bg-black">
+    <main className="fixed w-screen h-screen inset-0">
       <Leva />
 
       <Canvas>
@@ -23,9 +24,12 @@ export const Root = () => {
         <ambientLight />
         <directionalLight position={[0, 1.5, 3]} />
 
+        <Sky sunPosition={5} />
+
         <Suspense>
           {/* <Hamburger /> */}
-          <Fox />
+          {/* <Fox /> */}
+          <World />
         </Suspense>
       </Canvas>
     </main>
