@@ -1,20 +1,11 @@
 import { MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Leva, useControls } from "leva";
+import { Leva } from "leva";
 import { Perf } from "r3f-perf";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { Fox } from "./Fox";
-import { Hamburger } from "./Hamburger";
 
 export const Root = () => {
-  const { position } = useControls({
-    position: {
-      value: { x: 0, z: 0 },
-      min: -0.5,
-      max: 0.5,
-    },
-  });
-
   return (
     <main className="fixed w-screen h-screen inset-0 bg-black">
       <Leva />
