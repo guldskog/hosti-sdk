@@ -1,9 +1,14 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
 import { useEffect } from "react";
+import FOX from "../assets/Fox/glTF/Fox.gltf";
+import BIN from "../assets/Fox/glTF/Fox.bin";
+import TEXTURE from "../assets/Fox/glTF/Texture.png";
+import * as THREE from "three";
 
 export const Fox = () => {
-  const fox = useGLTF("./assets/Fox/glTF/Fox.gltf");
+  console.log(FOX, BIN, TEXTURE);
+  const fox = useGLTF(FOX);
   const animations = useAnimations(fox.animations, fox.scene);
 
   const { animation } = useControls({

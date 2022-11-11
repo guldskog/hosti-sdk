@@ -1,7 +1,8 @@
 import { useGLTF } from "@react-three/drei";
+import GLB from "../assets/hamburger.glb";
 
 export const Hamburger = (props) => {
-  const { nodes, materials } = useGLTF("./assets/hamburger.glb");
+  const { nodes, materials } = useGLTF(GLB);
 
   return (
     <group {...props} dispose={null}>
@@ -36,4 +37,4 @@ export const Hamburger = (props) => {
   );
 };
 
-useGLTF.preload("./assets/hamburger.glb");
+useGLTF.preload("./src/assets/hamburger.glb");

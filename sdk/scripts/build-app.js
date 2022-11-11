@@ -28,6 +28,9 @@ exec("git rev-parse --abbrev-ref HEAD", (err, stdout) => {
         ".jpeg": "file",
         ".svg": "file",
         ".gif": "file",
+        ".gltf": "file",
+        ".glb": "file",
+        ".bin": "file",
       },
       publicPath: `https://hosti.app/apps/${appId}/`,
       plugins: [
