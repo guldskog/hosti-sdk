@@ -1,12 +1,21 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import BROTHERS from "../assets/Brothers.gltf";
+import { useFrame } from "@react-three/fiber";
 
 export function World(props) {
   const { nodes, materials } = useGLTF(BROTHERS);
+
+  const guldskog = useRef<any>();
+
+  useFrame(() => {
+    guldskog.current.rotation.z += 0.01;
+    guldskog.current.rotation.x += 0.01;
+  });
+
   return (
     <group {...props} dispose={null}>
-      <mesh
+      {/* <mesh
         castShadow
         receiveShadow
         geometry={nodes.mesh_0.geometry}
@@ -34,8 +43,8 @@ export function World(props) {
         geometry={nodes.mesh_3.geometry}
         material={nodes.mesh_3.material}
         position={[4.25, 3.19, 4.75]}
-      />
-      <mesh
+      /> */}
+      {/* <mesh
         castShadow
         receiveShadow
         geometry={nodes.mesh_4.geometry}
@@ -48,8 +57,8 @@ export function World(props) {
         geometry={nodes.mesh_5.geometry}
         material={nodes.mesh_5.material}
         position={[4.2, 3.3, 5.33]}
-      />
-      <mesh
+      /> */}
+      {/* <mesh
         castShadow
         receiveShadow
         geometry={nodes.mesh_6.geometry}
@@ -57,8 +66,9 @@ export function World(props) {
         position={[4.14, 3.47, 4.87]}
         rotation={[0, 0.75, 0]}
         scale={[1, 1, 1.51]}
-      />
+      /> */}
       <mesh
+        ref={guldskog}
         castShadow
         receiveShadow
         geometry={nodes.mesh_7.geometry}
