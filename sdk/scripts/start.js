@@ -51,6 +51,9 @@ exec(getCurrentBranchName, (err, stdout) => {
           ".jpeg": "file",
           ".svg": "file",
           ".gif": "file",
+          ".gltf": "file",
+          ".glb": "file",
+          ".bin": "file",
         },
         publicPath: "http://localhost:4001/",
         plugins: [
