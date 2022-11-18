@@ -11,4 +11,8 @@ body {
   position: absolute;
   width: 100%;
   min-height: 100%;
+  background: black;
+  display: grid;
+  place-items: center;
+  transform: rotate(180deg);
 }
