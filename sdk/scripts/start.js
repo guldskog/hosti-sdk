@@ -3,6 +3,7 @@ const { exec } = require("child_process");
 const esbuild = require("esbuild");
 const browserSync = require("browser-sync");
 const SocketServer = require("ws").Server;
+const postCssPlugin = require("esbuild-style-plugin");
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -37,7 +38,7 @@ exec(getCurrentBranchName, (err, stdout) => {
       },
       {
         entryPoints: {
-          app: "src/app.ts",
+          app: "src/app.tsx",
           manifest: "src/manifest.json",
           hosti: "sdk/hosti/index.ts",
         },
@@ -52,7 +53,13 @@ exec(getCurrentBranchName, (err, stdout) => {
           ".gif": "file",
         },
         publicPath: "http://localhost:4001/",
-        plugins: [],
+        plugins: [
+          postCssPlugin({
+            postcss: {
+              plugins: [require("tailwindcss"), require("autoprefixer")],
+            },
+          }),
+        ],
         logLevel: "error",
       }
     )
