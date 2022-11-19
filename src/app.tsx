@@ -3,14 +3,19 @@ import { App } from "@hosti/models";
 import ReactDOM from "react-dom/client";
 import { Root } from "./components/Root";
 import "./styles.css";
+import { StrictMode } from "react";
 
 const app: App = ({ node, navigation }) => {
   const root = ReactDOM.createRoot(node);
 
   root.render(
-    <NavigationContext.Provider value={{ ...navigation }}>
-      <Root />
-    </NavigationContext.Provider>
+    <StrictMode>
+      <NavigationContext.Provider value={{ ...navigation }}>
+        <div>
+          <Root />
+        </div>
+      </NavigationContext.Provider>
+    </StrictMode>
   );
 };
 
