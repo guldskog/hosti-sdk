@@ -59,6 +59,12 @@ const loadApp = async (path: string, manifest?: Manifest) => {
 
     loadApp("http://localhost:4001");
   } else {
+    addEventListener("keyup", ({ key }) => {
+      if (key === "Escape") {
+        location.href = "https://hosti.app/";
+      }
+    });
+
     const appPath = `https://hosti.app/apps/${navigation.current().appId}`;
 
     const response = await fetch(`${appPath}/manifest.json`);
