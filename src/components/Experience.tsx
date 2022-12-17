@@ -24,7 +24,7 @@ export const Experience = () => {
       {/* <color args={["#222632"]} attach="background" /> */}
       <Environment preset="sunset" />
 
-      <PresentationControls global polar={[-0.2, 0.2]} azimuth={[-0.5, 0.5]}>
+      <PresentationControls polar={[-0.2, 0.2]} azimuth={[-0.5, 0.5]}>
         <Suspense>
           <Float rotationIntensity={0.25}>
             <primitive
