@@ -37,7 +37,7 @@ export const Experience = () => {
                 transform
                 wrapperClass="htmlScreen"
                 distanceFactor={1}
-                position={[0.17, 1.34, 0.07]}
+                position={[0.17, 1.42, 0.07]}
                 rotation-x={0}
               >
                 <main id="website" className="bg-dark-primary">
