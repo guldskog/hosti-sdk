@@ -24,7 +24,7 @@ export const Root = () => {
         </div>
       </div>
 
-      <div className="md:hidden">
+      <div className="md:hidden relative">
         <Header />
         <div className="w-full h-screen"></div>
         <div className="absolute w-full h-screen p-8 inset-0">
@@ -32,25 +32,12 @@ export const Root = () => {
         </div>
         <Website />
 
-        <svg
-          viewBox="0 0 900 600"
-          className="h-[100vh] absolute left-[40vw] top-[92vh] scale-[0.8] filter blur-3xl opacity-10"
-        >
-          <path
-            d="M326.9 -86C370.9 29.5 317.7 196.8 241.5 227.3C165.3 257.9 66.1 151.7 4.1 85.2C-57.9 18.7 -82.7 -8.1 -77.2 -70.5C-71.6 -132.9 -35.8 -231 52.8 -248.1C141.4 -265.3 282.8 -201.5 326.9 -86"
-            className="fill-primary"
-          ></path>
-        </svg>
-
-        <svg
-          viewBox="0 0 900 600"
-          className="h-[100vh] absolute -translate-x-1/2 -translate-y-1/2 left-3/4 top-[365vh] filter blur-3xl opacity-10"
-        >
-          <path
-            d="M326.9 -86C370.9 29.5 317.7 196.8 241.5 227.3C165.3 257.9 66.1 151.7 4.1 85.2C-57.9 18.7 -82.7 -8.1 -77.2 -70.5C-71.6 -132.9 -35.8 -231 52.8 -248.1C141.4 -265.3 282.8 -201.5 326.9 -86"
-            className="fill-secondary"
-          ></path>
-        </svg>
+        <div
+          style={{
+            background: `radial-gradient(1600px circle at -25% 920px, rgba(174, 184, 202, 0.1), transparent 40%)`,
+          }}
+          className="absolute inset-0 pointer-events-none"
+        ></div>
       </div>
     </main>
   );
