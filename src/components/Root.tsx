@@ -25,13 +25,14 @@ export const Root = () => {
       </div>
 
       <div className="md:hidden relative">
-        <Header />
+        <div className="absolute w-full">
+          <Header />
+        </div>
         <div className="w-full h-[780px]"></div>
         <div className="absolute w-[360px] h-[780px] left-1/2 -translate-x-1/2 p-8 inset-0">
           <Experience />
         </div>
         <Website />
-
         <div
           style={{
             background: `radial-gradient(1600px circle at -25% 920px, rgba(174, 184, 202, 0.1), transparent 40%)`,
