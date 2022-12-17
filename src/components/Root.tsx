@@ -5,7 +5,7 @@ import Emil from "../assets/Emil.png";
 
 export const Root = () => {
   return (
-    <main className="overflow-x-hidden max-w-screen">
+    <main className="overflow-x-hidden max-w-full">
       <div className="fixed hidden md:grid inset-0 bg-dark-primary place-items-center">
         <div className="flex shadow-lg max-w-3xl bg-dark-secondary gap-8 p-16 rounded-lg">
           <img src={Emil} className="w-32 h-32 rounded-full" />
@@ -26,8 +26,8 @@ export const Root = () => {
 
       <div className="md:hidden">
         <Header />
-        <div className="w-screen h-screen"></div>
-        <div className="absolute w-screen h-screen inset-0">
+        <div className="w-full h-screen"></div>
+        <div className="absolute w-full h-screen p-16 inset-0">
           <Experience />
         </div>
         <Website />
