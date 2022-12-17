@@ -46,11 +46,10 @@ export const Experience = () => {
 
 export default function Phone(props) {
   const group = useRef();
-  const screen = useRef<any>();
   const { nodes, materials } = useGLTF(
     "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/iphone-x/model.gltf"
   );
-  console.log("screen", screen);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group position={[-0.2, 0.25, 0]} scale={1.5}>
@@ -144,17 +143,23 @@ export default function Phone(props) {
           material={materials["FrontCameraBlack.002"]}
           position={[0.34, 1.32, 0.08]}
         />
+
+        {/* The phone screen mesh */}
         <mesh
           geometry={nodes.SCREEN.geometry}
           material={materials["Display.002"]}
-          ref={screen}
+          wireframe={true}
         >
+          {/* Html */}
           <Html
             transform
             distanceFactor={2}
-            position={
-              screen.current ? screen.current.parent.position : [0, 0, 0]
-            }
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "relative",
+            }}
+            position={[0.22, -0.22, 0.05]}
           >
             <main className="website w-[93%] h-[652px] overflow-x-hidden rounded-[40px] bg-dark-primary">
               <Header />
@@ -162,6 +167,7 @@ export default function Phone(props) {
             </main>
           </Html>
         </mesh>
+
         <group position={[0.97, 0.56, 0]}>
           <mesh
             geometry={nodes.Circle032.geometry}
