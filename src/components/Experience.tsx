@@ -153,15 +153,15 @@ export default function Phone(props) {
           {/* Html */}
           <Html
             transform
-            distanceFactor={2}
+            distanceFactor={2.08}
             style={{
               width: "100%",
               height: "100%",
               position: "relative",
             }}
-            position={[0.22, -0.22, 0.05]}
+            position={[0.17, -0.225, 0.05]}
           >
-            <main className="website w-[93%] h-[652px] overflow-x-hidden rounded-[40px] bg-dark-primary">
+            <main className="website w-[100%] h-[626px] overflow-x-hidden rounded-[40px] bg-dark-primary">
               <Header />
               <Website />
             </main>

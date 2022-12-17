@@ -26,8 +26,8 @@ export const Root = () => {
 
       <div className="md:hidden relative">
         <Header />
-        <div className="w-full h-[768px]"></div>
-        <div className="absolute w-full h-[768px] p-8 inset-0">
+        <div className="w-full h-[780px]"></div>
+        <div className="absolute w-[360px] h-[780px] left-1/2 -translate-x-1/2 p-8 inset-0">
           <Experience />
         </div>
         <Website />
