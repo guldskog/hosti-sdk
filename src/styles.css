@@ -1,14 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
 body {
-  min-height: 100%;
+  background: #171a21;
+  color: #ffffff;
+  font-family: "JetBrains Mono", monospace;
 }
 
-#app {
-  position: absolute;
-  width: 100%;
-  min-height: 100%;
+.htmlScreen {
+  width: 400px;
+  height: 600px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+#website {
+  width: 604px;
+  height: 1296px;
+  border: none;
+  border-radius: 76px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.glow {
+  filter: drop-shadow(0px 0px 50px rgba(196, 0, 213, 0.25));
+  -webkit-filter: drop-shadow(0px 0px 50px rgba(196, 0, 213, 0.25));
+  transition: all 0.33s ease-in-out;
+}
+
+.glow:hover {
+  filter: drop-shadow(0px 0px 50px rgba(196, 0, 213, 0.5));
+  -webkit-filter: drop-shadow(0px 0px 50px rgba(196, 0, 213, 0.5));
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#website::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#website {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.waving-hand {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
