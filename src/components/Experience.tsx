@@ -146,7 +146,7 @@ export default function Phone(props) {
           geometry={nodes.SCREEN.geometry}
           material={materials["Display.002"]}
         >
-          <Html transform distanceFactor={2} position={[0.22, 0, 0.05]}>
+          <Html transform distanceFactor={2} position={[0, 0, 0]}>
             <main className="website w-[93%] h-[652px] overflow-x-hidden rounded-[40px] bg-dark-primary">
               <Header />
               <Website />
