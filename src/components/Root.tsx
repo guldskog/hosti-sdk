@@ -27,7 +27,7 @@ export const Root = () => {
       <div className="md:hidden">
         <Header />
         <div className="w-full h-screen"></div>
-        <div className="absolute w-full h-screen p-16 inset-0">
+        <div className="absolute w-full h-screen p-8 inset-0">
           <Experience />
         </div>
         <Website />
