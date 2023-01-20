@@ -1,16 +1,14 @@
-import { NavigationContext } from "./contexts/navigation";
 import { App } from "@hosti/models";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { Root } from "./components/Root";
+import { NavigationProvider } from "./providers/navigation";
 import "./styles.css";
 
 const app: App = ({ node, navigation }) => {
-  const root = ReactDOM.createRoot(node);
-
-  root.render(
-    <NavigationContext.Provider value={{ ...navigation }}>
+  createRoot(node).render(
+    <NavigationProvider {...navigation}>
       <Root />
-    </NavigationContext.Provider>
+    </NavigationProvider>
   );
 };
 
