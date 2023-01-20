@@ -1,5 +1,13 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  Fragment,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { NavigationContext } from "../contexts/navigation";
+import { useForceRerender } from "../hooks/useForceRerender";
+import { useNavigation } from "../hooks/useNavigation";
 
 export const RouteContext = createContext({
   parentRoutePaths: [] as string[],
@@ -11,22 +19,18 @@ export interface RouteProps {
 }
 
 export const Route: React.FC<RouteProps> = ({ path, children }) => {
-  const { current } = useContext(NavigationContext);
   const { parentRoutePaths } = useContext(RouteContext);
-
-  const params = current().params;
-
-  params.length = parentRoutePaths.length + 1;
+  const { params } = useNavigation();
 
   const show =
-    params.filter(Boolean).join("/") === [...parentRoutePaths, path].join("/");
+    params.join("/") === [...parentRoutePaths, ...path.split("/")].join("/");
 
   if (!show) return null;
 
   return (
     <RouteContext.Provider
       value={{
-        parentRoutePaths: [...parentRoutePaths, path],
+        parentRoutePaths: [...parentRoutePaths, ...path.split("/")],
       }}
     >
       {children}

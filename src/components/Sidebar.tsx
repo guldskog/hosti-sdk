@@ -7,11 +7,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export interface NavProps {
+export interface SidebarProps {
   items: { name: string; path: string }[];
 }
 
-export const Nav: React.FC<NavProps> = ({ items }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ items }) => {
   const { parentRoutePaths } = useContext(RouteContext);
   const { navigate, current, subscribe } = useContext(NavigationContext);
 
@@ -27,7 +27,7 @@ export const Nav: React.FC<NavProps> = ({ items }) => {
   }, []);
 
   return (
-    <nav className="flex space-x-4">
+    <nav className="flex flex-col w-fit space-y-4 bg-white p-2">
       {items.map(({ name, path }) => {
         return (
           <button

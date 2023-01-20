@@ -11,6 +11,5 @@ body {
   position: absolute;
   width: 100%;
   min-height: 100%;
-  display: grid;
-  place-items: center;
+  padding: 20px;
 }
