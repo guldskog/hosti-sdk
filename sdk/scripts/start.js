@@ -60,7 +60,6 @@ exec(getCurrentBranchName, (err, stdout) => {
       browserSync.create().init({
         ghostMode: false,
         ui: false,
-        https: true,
         port: 4000,
         startPath: `/${appId && appId !== "home" ? `@${appId}` : ""}`,
         notify: false,
