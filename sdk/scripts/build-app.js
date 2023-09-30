@@ -1,11 +1,21 @@
 const fs = require("fs");
 const { exec } = require("child_process");
 const esbuild = require("esbuild");
-const { version } = require("../../src/manifest.json");
+
+const manifestPath = "./src/manifest.json";
+
+const bumpVersion = process.argv.find((arg) => arg === "--bump-version");
 
 exec("git rev-parse --abbrev-ref HEAD", (err, stdout) => {
   if (!stdout.trim().startsWith("apps/")) {
     throw new Error('Branch out "apps/{appId}" then try again!');
+  }
+
+  const manifest = JSON.parse(fs.readFileSync(manifestPath));
+
+  if (bumpVersion) {
+    manifest.version += 1;
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, " "));
   }
 
   const appId = stdout.trim().replace("apps/", "");
@@ -29,8 +39,8 @@ exec("git rev-parse --abbrev-ref HEAD", (err, stdout) => {
       plugins: [],
       logLevel: "error",
       banner: {
-        js: `// ${appId} ${version}`,
-        css: `/* ${appId} ${version} */`,
+        js: `// ${appId} ${manifest.version}`,
+        css: `/* ${appId} ${manifest.version} */`,
       },
     })
     .then(async () => {
@@ -45,6 +55,8 @@ exec("git rev-parse --abbrev-ref HEAD", (err, stdout) => {
       const cssStats = fs.statSync("dist/app.css");
       const cssKbSize = Math.floor(cssStats.size / 1024);
 
+      console.log("App ID:", appId);
+      console.log("Version:", manifest.version);
       console.log("Script:", jsKbSize, "kb");
       console.log("CSS:", cssKbSize, "kb");
       console.log("");

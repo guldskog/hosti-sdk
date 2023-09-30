@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build app
-        run: yarn build-app
+        run: yarn build-app --bump-version
       - name: Archive artifact
         uses: actions/upload-artifact@main
         with:
